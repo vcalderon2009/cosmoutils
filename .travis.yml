@@ -74,15 +74,15 @@ matrix:
 
     include:
         # Try MacOS X
-        # - os: osx
-        #   env: SETUP_CMD='test'
+        - os: osx
+          env: SETUP_CMD='test'
+        # Try Linux
         - os: linux
           env: SETUP_CMD='test'
-        # MacOS X
 
         # Do a coverage test.
-        - os: linux
-          env: SETUP_CMD='test --coverage'
+        # - os: linux
+        #   env: SETUP_CMD='test --coverage'
 
         # # Check for sphinx doc build warnings - we do this first because it
         # # may run for a long time
@@ -116,15 +116,16 @@ matrix:
         # Do a PEP8 test with pycodestyle
         - os: linux
           env: MAIN_CMD='pycodestyle cosmoutils --count' SETUP_CMD=''
-        ## Allow failure from MacOS X
-        - os: osx
-          env: SETUP_CMD='test'
 
     allow_failures:
         # Do a PEP8 test with pycodestyle
         # (allow to fail unless your code completely compliant)
         - os: linux
           env: MAIN_CMD='pycodestyle cosmoutils --count' SETUP_CMD=''
+
+before_install:
+  - pip install pytest pytest-cov
+  - pip install coveralls
 
 install:
 
@@ -158,3 +159,4 @@ after_success:
     # If coveralls.io is set up for this package, uncomment the line below.
     # The coveragerc file may be customized as needed for your package.
     # - if [[ $SETUP_CMD == *coverage* ]]; then coveralls --rcfile='cosmoutils/tests/coveragerc'; fi
+    - coveralls --rcfile='cosmoutils/tests/coveragerc'
