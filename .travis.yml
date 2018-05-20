@@ -39,7 +39,7 @@ env:
         - ASTROPY_VERSION=stable
         - MAIN_CMD='python setup.py'
         - SETUP_CMD='test'
-        - PIP_DEPENDENCIES=''
+        - PIP_DEPENDENCIES='pytest pytest-cov coveralls'
         - EVENT_TYPE='pull_request push'
 
         
@@ -122,10 +122,6 @@ matrix:
         # (allow to fail unless your code completely compliant)
         - os: linux
           env: MAIN_CMD='pycodestyle cosmoutils --count' SETUP_CMD=''
-
-before_install:
-  - pip install pytest pytest-cov
-  - pip install coveralls
 
 install:
 
