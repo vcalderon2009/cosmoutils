@@ -1,0 +1,23 @@
+name: cosmo_utils
+
+channels:
+    - astropy
+    - conda-forge
+
+dependencies:
+    - python >= 3.5
+    - astropy
+    - Cython
+    - matplotlib
+    - numpy
+    - h5py
+    - pandas
+    - scipy
+    - numexpr
+    - cython
+    - scikit-learn>=0.19.1
+    - pip:
+      - GitPython
+      - Cython
+      - sphinx_rtd_theme
+      - astropy_sphinx_theme
