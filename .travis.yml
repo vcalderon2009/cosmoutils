@@ -45,7 +45,7 @@ env:
         
         # List other runtime dependencies for the package that are available as
         # conda packages here.
-        - CONDA_DEPENDENCIES='cython scipy h5py pandas numexpr requests scikit-learn xgboost'
+        - CONDA_DEPENDENCIES='cython scipy h5py pandas numexpr requests scikit-learn'
         
         # List other runtime dependencies for the package that are available as
         # pip packages here.
