@@ -19,7 +19,7 @@ notifications:
     recipients:
       - victor.calderon90@gmail.com
     on_success: change
-    # on_failure: always
+    # on_failure: always 
 
 addons:
     apt:
