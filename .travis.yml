@@ -81,8 +81,8 @@ matrix:
         # MacOS X
 
         # Do a coverage test.
-        # - os: linux
-        #   env: SETUP_CMD='test --coverage'
+        - os: linux
+          env: SETUP_CMD='test --coverage'
 
         # # Check for sphinx doc build warnings - we do this first because it
         # # may run for a long time
