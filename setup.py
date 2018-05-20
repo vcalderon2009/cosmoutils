@@ -1,11 +1,66 @@
-from setuptools import setup, find_packages
+#!/usr/bin/env python
+# Licensed under a 3-clause BSD style license - see LICENSE.rst
 
-install_requirements = ['astropy', 'numpy', 'pandas', 'h5py', 'GitPython', 'cython', 'requests', 'numexpr', 'scipy', 'scikit-learn']
-setup_requirements   = ['astropy', 'numpy', 'pandas', 'h5py', 'GitPython', 'cython', 'requests', 'numexpr', 'scipy', 'scikit-learn']
-test_requirements    = ['pytest']
-
+import glob
+import os
+import sys
 from setuptools.command.test import test as TestCommand
 import sys
+
+# Enforce Python version check - this is the same check as in __init__.py but
+# this one has to happen before importing ah_bootstrap.
+if sys.version_info < tuple((int(val) for val in "3.5".split('.'))):
+    sys.stderr.write("ERROR: cosmo_utils requires Python {} or later\n".format(3.5))
+    sys.exit(1)
+
+from setuptools import setup, find_packages
+
+# Get some values from the setup.cfg
+try:
+    from ConfigParser import ConfigParser
+except ImportError:
+    from configparser import ConfigParser
+
+conf = ConfigParser()
+conf.read(['setup.cfg'])
+metadata = dict(conf.items('metadata'))
+
+PACKAGENAME = metadata.get('package_name', 'cosmo_utils')
+DESCRIPTION = metadata.get('description', 'Repository with scripts used in my LSS research')
+AUTHOR = metadata.get('author', 'Victor Calderon')
+AUTHOR_EMAIL = metadata.get('author_email', '')
+LICENSE = metadata.get('license', 'unknown')
+URL = metadata.get('url', 'https://github.com/vcalderon2009/cosmo_utils')
+
+# order of priority for long_description:
+#   (1) set in setup.cfg,
+#   (2) load LONG_DESCRIPTION.rst,
+#   (3) load README.rst,
+#   (4) package docstring
+readme_glob = 'README*'
+_cfg_long_description = metadata.get('long_description', '')
+if _cfg_long_description:
+    LONG_DESCRIPTION = _cfg_long_description
+
+elif os.path.exists('LONG_DESCRIPTION.rst'):
+    with open('LONG_DESCRIPTION.rst') as f:
+        LONG_DESCRIPTION = f.read()
+
+elif len(glob.glob(readme_glob)) > 0:
+    with open(glob.glob(readme_glob)[0]) as f:
+        LONG_DESCRIPTION = f.read()
+
+else:
+    # Get the long description from the package's docstring
+    __import__(PACKAGENAME)
+    package = sys.modules[PACKAGENAME]
+    LONG_DESCRIPTION = package.__doc__
+
+# VERSION should be PEP440 compatible (http://www.python.org/dev/peps/pep-0440)
+VERSION = metadata.get('version', '0.0.dev0')
+
+# Indicates if this version is a release version
+RELEASE = 'dev' not in VERSION
 
 
 class PyTest(TestCommand):
@@ -26,17 +81,17 @@ class PyTest(TestCommand):
         errno = pytest.main(self.pytest_args)
         sys.exit(errno)
 
-setup(name='cosmoutils',
-      version='0.2.0',
-      description='LSS Programs',
-      url='http://github.com/vcalderon2009/cosmo_utils2',
-      author='Victor Calderon',
-      author_email='victor.calderon90@gmail.com',
-      license='MIT',
+setup(name=PACKAGENAME,
+      version=VERSION,
+      description=DESCRIPTION,
+      url=URL,
+      author=AUTHOR,
+      author_email=AUTHOR_EMAIL,
+      license=LICENSE,
       packages=find_packages(),
-      install_requires=install_requirements,
-      setup_requires=setup_requirements,
-      tests_require=test_requirements,
+      install_requires=[s.strip() for s in metadata.get('install_requires', 'astropy').split(',')],
+      setup_requires=[s.strip() for s in metadata.get('setup_requirements', 'astropy').split(',')],
+      tests_require=[s.strip() for s in metadata.get('test_requirements', 'astropy').split(',')],,
       test_suite='tests',
       cmdclass = {'test': PyTest},
       zip_safe=False)
