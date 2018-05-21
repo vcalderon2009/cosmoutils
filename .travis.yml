@@ -149,6 +149,7 @@ install:
     # other dependencies.
 
 script:
+   - python setup.py build_ext --inplace
    - $MAIN_CMD $SETUP_CMD
 
 after_success:
