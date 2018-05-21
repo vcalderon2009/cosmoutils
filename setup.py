@@ -87,7 +87,7 @@ from Cython.Distutils import build_ext
 from setuptools.extension import Extension
 from find_cython import get_extensions
 
-extensions = get_extensions()
+# extensions = get_extensions()
 
 ## Main Setup for the Package
 
@@ -106,4 +106,5 @@ setup(name=PACKAGENAME,
       test_suite='tests',
       cmdclass = {'test': PyTest, 'build_ext': build_ext},
       zip_safe=False,
-      ext_modules = cythonize(extensions))
+      # ext_modules = cythonize(extensions)
+      )
