@@ -81,6 +81,15 @@ class PyTest(TestCommand):
         errno = pytest.main(self.pytest_args)
         sys.exit(errno)
 
+# Compiling Cython
+from Cython.Build import cythonize, build_ext
+from setuptools.extension import Extension
+from find_cython import get_extensions
+
+extensions = get_extensions()
+
+## Main Setup for the Package
+
 setup(name=PACKAGENAME,
       version=VERSION,
       description=DESCRIPTION,
@@ -94,4 +103,5 @@ setup(name=PACKAGENAME,
       tests_require=[s.strip() for s in metadata.get('test_requirements', 'astropy').split(',')],
       test_suite='tests',
       cmdclass = {'test': PyTest},
-      zip_safe=False)
+      zip_safe=False,
+      ext_modules = cythonize(extensions))

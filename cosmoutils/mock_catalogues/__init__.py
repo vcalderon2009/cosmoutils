@@ -10,4 +10,4 @@ from cosmoutils.mock_catalogues import catls_utils
 from cosmoutils.mock_catalogues import mags_calculations
 from cosmoutils.mock_catalogues import shmr_funcs
 from cosmoutils.mock_catalogues import spherematch
-# from cosmoutils.mock_catalogues import pair_counters
+from cosmoutils.mock_catalogues import pair_counters
