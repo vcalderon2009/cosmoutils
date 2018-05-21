@@ -94,6 +94,7 @@ extensions = get_extensions()
 setup(name=PACKAGENAME,
       version=VERSION,
       description=DESCRIPTION,
+      long_description=LONG_DESCRIPTION,
       url=URL,
       author=AUTHOR,
       author_email=AUTHOR_EMAIL,
