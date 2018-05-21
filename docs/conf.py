@@ -12,6 +12,8 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
+# Load all of the global Astropy configuration
+from sphinx_astropy.conf import *
 import datetime
 import os
 import sys
@@ -21,8 +23,6 @@ import astropy_sphinx_theme
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-# Load all of the global Astropy configuration
-from sphinx_astropy.conf import *
 
 # Get configuration information from setup.cfg
 try:
@@ -45,22 +45,22 @@ setup_cfg = dict(conf.items('metadata'))
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = [
-    # 'easydev.copybutton',
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
-    'sphinx.ext.coverage',
-    'sphinx.ext.graphviz',
-    'sphinx.ext.doctest',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.imgmath',
-    'sphinx.ext.ifconfig',
-    'sphinx_automodapi.automodapi'
-    # 'matplotlib.sphinxext.only_directives',
-    # 'matplotlib.sphinxext.plot_directive',
- ]
+# extensions = [
+#     # 'easydev.copybutton',
+#     'sphinx.ext.autodoc',
+#     'sphinx.ext.autosummary',
+#     'sphinx.ext.coverage',
+#     'sphinx.ext.graphviz',
+#     'sphinx.ext.doctest',
+#     'sphinx.ext.intersphinx',
+#     'sphinx.ext.todo',
+#     'sphinx.ext.coverage',
+#     'sphinx.ext.imgmath',
+#     'sphinx.ext.ifconfig',
+#     'sphinx_automodapi.automodapi'
+#     # 'matplotlib.sphinxext.only_directives',
+#     # 'matplotlib.sphinxext.plot_directive',
+#  ]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
