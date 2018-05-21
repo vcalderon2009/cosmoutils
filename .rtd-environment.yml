@@ -22,3 +22,4 @@ dependencies:
       - sphinx_rtd_theme
       - astropy_sphinx_theme
       - sphinx-automodapi
+      - sphinx-astropy
