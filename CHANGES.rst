@@ -13,7 +13,7 @@
 -----------------------
 
 - Introduced `pairwise` counting again.
-- Fixed bug in :py:func:`~cosmo_utils.mock_catalogues.shmr_funcs.Behroozi_relation`
+- Fixed bug in :py:func:`~cosmoutils.mock_catalogues.shmr_funcs.Behroozi_relation`
 
 0.1.24 (2018-05-17)
 -----------------------
@@ -24,13 +24,13 @@
 0.1.23 (2018-05-16)
 -----------------------
 
-- Checking for input parameters (:py:func:`~cosmo_utils.utils.stats_funcs.sigma_calcs`)
-- Fixed issue with galaxy type (:py:func:`~cosmo_utils.mock_catalogues.catls_utils.sdss_catl_clean_nmin`)
+- Checking for input parameters (:py:func:`~cosmoutils.utils.stats_funcs.sigma_calcs`)
+- Fixed issue with galaxy type (:py:func:`~cosmoutils.mock_catalogues.catls_utils.sdss_catl_clean_nmin`)
 
 0.1.22 (2018-05-15)
 -----------------------
 
-- Fixed bug with function :py:func:`~cosmo_utils.mock_catalogues.catls_utils.sdss_catl_clean`
+- Fixed bug with function :py:func:`~cosmoutils.mock_catalogues.catls_utils.sdss_catl_clean`
 
 0.1.21 (2018-05-11)
 -----------------------
