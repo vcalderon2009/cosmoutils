@@ -8,7 +8,7 @@ astrophysics, and the `Sloan Digital Sky Survey <http://www.sdss.org/>`_.
 The source code is freely availabe at
 `https://github.com/vcalderon2009/cosmoutils <https://github.com/vcalderon2009/cosmoutils>`_.
 
-.. |PyPI| |Travis_Build| |Issues| |RTD|
+|PyPI| |Travis_Build| |Issues| |RTD|
 
 Getting Started
 ===============
