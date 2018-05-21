@@ -148,8 +148,10 @@ install:
     # section if they are needed before setting up conda) to install any
     # other dependencies.
 
+before_script:
+    - python setup.py build_ext --inplace
+
 script:
-   - python setup.py build_ext --inplace
    - $MAIN_CMD $SETUP_CMD
 
 after_success:
