@@ -28,6 +28,8 @@ Comprehensive Cosmo Utils Reference/API
 
 .. automodapi:: cosmoutils.mock_catalogues.catls_utils
 
+.. automodapi:: cosmoutils.mock_catalogues.pair_counters
+
 .. automodapi:: cosmoutils.ml
 
 .. automodapi:: cosmoutils.ml.ml_utils
